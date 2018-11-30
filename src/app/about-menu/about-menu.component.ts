@@ -9,14 +9,13 @@ import { Router } from '@angular/router';
 })
 export class AboutMenuComponent implements OnInit {
 
-  constructor(private previousRouteService: PreviousRouteService,
-    private router: Router) { }
+  constructor(private previousRouteService: PreviousRouteService) { }
 
   ngOnInit() {
   }
 
   private goToPreviousRoute() {
-    this.router.navigateByUrl(this.previousRouteService.getPreviousRoute());
+    this.previousRouteService.goToPreviousRoute();
   }
 
 }

@@ -12,15 +12,26 @@ export class PreviousRouteService {
   constructor(private router: Router) {
     this.routeStack = [];
     this.currentRoute = this.router.url;
+    this.routeStack.push(this.currentRoute);
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.routeStack.push(this.currentRoute);
-        this.currentRoute = event.url;
+        if (this.currentRoute !== event.url) {
+          this.routeStack.push(this.currentRoute);
+          this.currentRoute = event.url;
+        }
       }
     });
   }
 
-  public getPreviousRoute() {
-    return this.routeStack.pop();
+  public goToPreviousRoute(): void {
+    this.router.navigateByUrl(this.getPreviousRoute());
+  }
+
+  public getPreviousRoute(): string {
+    let lastRoute = this.routeStack.pop();
+    if (lastRoute === this.currentRoute) {
+      lastRoute = this.routeStack.pop();
+    }
+    return lastRoute;
   }
 }

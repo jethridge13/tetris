@@ -17,7 +17,7 @@ export class StartMenuComponent implements OnInit {
   }
 
   private goToPreviousRoute() {
-    this.router.navigateByUrl(this.previousRouteService.getPreviousRoute());
+    this.previousRouteService.goToPreviousRoute();
   }
 
 }
