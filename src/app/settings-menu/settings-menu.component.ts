@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { PreviousRouteService } from '../previous-route.service';
 
 @Component({
   selector: 'app-settings-menu',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private previousRouteService: PreviousRouteService,
+    private router: Router) { }
 
   ngOnInit() {
+  }
+
+  private goToPreviousRoute() {
+    this.router.navigateByUrl(this.previousRouteService.getPreviousRoute());
   }
 
 }
