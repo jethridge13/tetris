@@ -10,6 +10,8 @@ import { PreviousRouteService } from '../previous-route.service';
 })
 export class StartMenuComponent implements OnInit {
 
+  title = 'Play';
+
   constructor(private previousRouteService: PreviousRouteService,
     private router: Router) { }
 

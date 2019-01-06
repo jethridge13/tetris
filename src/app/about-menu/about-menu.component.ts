@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AboutMenuComponent implements OnInit {
 
+	title = 'Tetris by Josh';
+
   constructor(private previousRouteService: PreviousRouteService) { }
 
   ngOnInit() {
